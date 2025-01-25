@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <mpi.h>
+
+int main(int argc, char *argv[], char *environ[]) {
+    int npes, myrank, number;
+
+    MPI_Init(&argc, &argv);                           // Initialize the MPI environment
+    MPI_Comm_size(MPI_COMM_WORLD, &npes);             // Get the number of processes
+    MPI_Comm_rank(MPI_COMM_WORLD, &myrank);           // Get the rank of the process
+
+    if (myrank % 2 == 0) {
+        // Even ranked processes receive first, then send
+        MPI_Recv(&number, 1, MPI_INT, (myrank + 1) % npes, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        MPI_Send(&number, 1, MPI_INT, (myrank + 1) % npes, 0, MPI_COMM_WORLD);
+    } else {
+        // Odd ranked processes send first, then receive
+        number = myrank;
+        MPI_Send(&number, 1, MPI_INT, (myrank - 1 + npes) % npes, 0, MPI_COMM_WORLD);
+        MPI_Recv(&number, 1, MPI_INT, (myrank - 1 + npes) % npes, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    }
+
+    printf("Process %d received number %d\n", myrank, number);
+
+    MPI_Finalize();                                   // Finalize the MPI environment
+    return 0;
+}

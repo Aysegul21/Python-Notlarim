@@ -1,0 +1,10 @@
+
+print("Denklem yazilisi: ax^2+bx+c\n")
+a=int(input("a degerini giriniz:"))
+b=int(input("b degerini giriniz:"))
+c=int(input("c degerini giriniz:"))
+print("denklem:{}x^2 + {}x+{}".format(a,b,c))
+delta=b**2-(4*a*c)
+BirinciKok=(b-delta**0.5) / (2*a)
+IkinciKok=(-b+delta**0.5) / (2*a)
+print("Denklemin kokleri \nBirinciKok:{}\nIkinciKok:{}".format(BirinciKok,IkinciKok))

@@ -1,0 +1,26 @@
+Sistem Tanımı
+Tasarlanan İHA, yarışmanın iki ana görevi olan “Savaşan İHA” ve “Kamikaze İHA”
+görevlerini icra etmek üzere geliştirilmiştir.
+Savaşan İHA görevinde İHA, it dalaşı (dog fight) durumunda rakip İHA hedeflerini tespit edip,
+hedeflere sanal ortamda başarıyla vuruş yaparken aynı zamanda rakip İHA’lar tarafından
+gerçekleştirilecek olası kilitlenme durumlarından kaçmaya çalışacaktır.
+
+Kamikaze İHA görevinde ise İHA, yarışma pisti üzerinde konumlandırılmış yer hedeflerini
+farklı görüş açılarından otonom olarak tespit edecektir. Hedef ile İHA arasındaki mesafeye göre
+gerekli manevraları yaparak başarılı bir şekilde tespiti tamamlayacaktır.
+
+İHA uçuş esnasında kamera verilerini doğrudan görev bilgisayarına iletmektedir. Görev
+bilgisayarı gelen kamera verilerini nesne tanıma-takip algoritmaları aracılığıyla işleyerek
+yapılması gereken manevraya karar vermektedir. Yapılacak manevra duruma göre ya rakip
+İHA’lara kilitlenmek ya da QR kod okumak amaçlı olacaktır. İHA, Savaşan İHA görevini icra
+ediyorsa yarışma sunucusundan alınan rakip İHA telemetri verileri işlenerek en yakın rakip
+İHA’ya kilitlenme amaçlı yönlendirilecektir. Telemetri verilerinden İHA’nın rakip İHA
+tarafından takip edildiğinin belirlenmesi durumunda ise kaçış manevrası icra edilecektir. İHA,
+Kamikaze İHA görevinde ise yarışma sunucusundan alınan QR kod konum bilgileri
+kullanılarak QR koda doğru yönelim ve ardından tespit gerçekleştirilecektir. Gerekli
+manevralar için emir görev bilgisayarı tarafından uçuş kartına gönderilmekte, uçuş kartı ise
+İHA motorları üzerinde manevrayı gerçekleştirecek manipülasyonu yaparak İHA’yı komuta
+etmektedir.
+İHA ana görevlerin icrası ile eş zamanlı olarak, kamera görüntü ve telemetri verilerini Yer
+Kontrol İstasyonuna (YKİ) kablosuz erişim noktaları aracılığı ile kesintisiz olarak iletecektir.
+YKİ ise İHA’dan alınan verileri kaydederek yarışma sunucusuna aktaracaktır.
